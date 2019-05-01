@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="12" failures="0" name="service.ProductServiceTest" time="0.007" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="E:\Java\jdk1.8.0_181\jre\bin"/>
+    <property name="java.vm.version" value="25.181-b12"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\masze\IdeaProjects\managmentMaven"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="PL"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\masze\IdeaProjects\managmentMaven"/>
+    <property name="java.runtime.version" value="1.8.0_181-b12"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="E:\Java\jdk1.8.0_181\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\masze\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.library.path" value="E:\Java\jdk1.8.0_181\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\Java\jdk1.8.0_181\bin;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;E:\Program Files\Git\cmd;%MAVEN_HOME%\bin;E:\Java\jdk1.8.0_181\bin;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;E:\Program Files\Git\cmd;C:\Users\masze\AppData\Local\Microsoft\WindowsApps;E:\Users\masze\AppData\Local\Programs\Fiddler;E:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.3.5\bin;E:\Java\jdk1.8.0_181;C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin;C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin;C:\Program Files\Java\jdk1.8.0_181\bin;E:\Java\jdk1.8.0_181;E:\Java\jdk1.8.0_181\jre;\bin;C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin;;."/>
+    <property name="maven.conf" value="C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin\../conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="library.jansi.path" value="C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin\..\lib\jansi-native"/>
+    <property name="user.home" value="C:\Users\masze"/>
+    <property name="user.timezone" value="Europe/Belgrade"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1250"/>
+    <property name="user.name" value="masze"/>
+    <property name="java.class.path" value="C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="E:\Java\jdk1.8.0_181\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="pl"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_181"/>
+    <property name="java.ext.dirs" value="E:\Java\jdk1.8.0_181\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="E:\Java\jdk1.8.0_181\jre\lib\resources.jar;E:\Java\jdk1.8.0_181\jre\lib\rt.jar;E:\Java\jdk1.8.0_181\jre\lib\sunrsasign.jar;E:\Java\jdk1.8.0_181\jre\lib\jsse.jar;E:\Java\jdk1.8.0_181\jre\lib\jce.jar;E:\Java\jdk1.8.0_181\jre\lib\charsets.jar;E:\Java\jdk1.8.0_181\jre\lib\jfr.jar;E:\Java\jdk1.8.0_181\jre\classes"/>
+    <property name="sun.stderr.encoding" value="cp852"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\apache-maven-3.5.4\apache-maven-3.5.4\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.stdout.encoding" value="cp852"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="service.ProductServiceTest" name="testGetProductByProductNameNotExist" time="0.005"/>
+  <testcase classname="service.ProductServiceTest" name="testGetCountProductWithoutProducts" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testGetProductByProductNameExist" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="isProductWithIdNotExisting" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testIsMoreProductsThan0" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testGetCountProductPositive" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testIsProductByNameNotExisting" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testEqualProducts0" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="isProductWithIdExisting" time="0.001"/>
+  <testcase classname="service.ProductServiceTest" name="testGetAllProductsPositive" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testGetAllProductsNegative" time="0"/>
+  <testcase classname="service.ProductServiceTest" name="testIsProductByNameExisting" time="0.001"/>
+</testsuite>
