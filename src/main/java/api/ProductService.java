@@ -13,4 +13,5 @@ public interface ProductService {
     boolean isMoreProductThan0(String productName);
     boolean isProductByNameExisting(String productName);
     boolean isProductWithIdExisting(Long productId);
+    boolean saveProduct(Product product);
 }

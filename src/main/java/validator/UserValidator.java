@@ -28,7 +28,7 @@ public class UserValidator {
         return instance;
     }
 
-    public boolean isValidate(User user) throws UserLoginAlreadyExistException, UserShortLengthLoginException, UserShortLengthPasswordException {
+    public boolean isValidate(User user) throws  UserShortLengthLoginException, UserShortLengthPasswordException {
 
        if(isPasswordLenghtEnough(user.getPassword()))
             throw new UserShortLengthPasswordException("Password is too short");
@@ -37,9 +37,6 @@ public class UserValidator {
        if(isLoginLenghtEnough(user.getLogin()))
            throw new UserShortLengthLoginException("Login is too short");
 
-
-       if(isLoginAlreadyExist(user.getLogin()))
-           throw new UserLoginAlreadyExistException("Login is already existing");
 
        return true;
     }
@@ -52,17 +49,6 @@ public class UserValidator {
         return login.length() >= MIN_LENGTH_LOGIN;
     }
 
-    private boolean isLoginAlreadyExist(String login){
-        User user = null;
-        try {
-            user = userDao.getUserByLogin(login);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        if (user == null) return false;
-
-        return true;
-    }
 }
 

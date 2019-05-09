@@ -8,7 +8,10 @@ import exceptions.UserShortLengthPasswordException;
 
 public interface UserService {
 
+    boolean addUser(User user);
+    void removeUserById(Long userId) throws IOException;
     List<User> getAllUsers() throws IOException;
-    void addUser(User user) throws IOException, UserShortLengthPasswordException, UserShortLengthLoginException, UserLoginAlreadyExistException;
-    void removeUserById(Long getId) throws IOException;
+    User getUserById(Long userId) throws IOException;
+    User getUserByLogin(String login) throws IOException;
+    boolean isCorrectLoginAndPassword(String login, String password);
 }

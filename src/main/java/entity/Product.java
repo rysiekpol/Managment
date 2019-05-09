@@ -18,6 +18,7 @@ public class Product {
     }
 
     public final static String PRODUCT_SEPARATOR = "#";
+    public final static char PRODUCT_TYPE = 'P';
 
     public Long getId(){
         return productId;
@@ -51,15 +52,12 @@ public class Product {
         this.productCount = productCount;
     }
 
+    protected String getBasicProductString() {
+        return productId + PRODUCT_SEPARATOR + productName + PRODUCT_SEPARATOR + price + PRODUCT_SEPARATOR + weight + PRODUCT_SEPARATOR + color + PRODUCT_SEPARATOR + productCount;
+    }
+
     @Override
-    public String toString(){
-        return "Product{" +
-                "id=" + productId +
-                ", productName='" + productName + '\'' +
-                ", price=" + price +
-                ", weight=" + weight +
-                ", color='" + color + '\'' +
-                ", productCount=" + productCount +
-                '}';
+    public String toString() {
+        return PRODUCT_TYPE + PRODUCT_SEPARATOR + getBasicProductString();
     }
 }

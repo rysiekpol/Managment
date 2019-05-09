@@ -4,6 +4,7 @@ import api.ProductDao;
 import api.ProductService;
 import dao.ProductDaoImpl;
 import entity.Product;
+import validator.ProductValidator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private static ProductServiceImpl instance = null;
-    private ProductDao productDao = new ProductDaoImpl("products.data", "PRODUCT");
+    private ProductDao productDao = ProductDaoImpl.getInstance();
+    private ProductValidator productValidator = ProductValidator.getInstance();
 
     private ProductServiceImpl(){
 
@@ -71,4 +73,18 @@ public class ProductServiceImpl implements ProductService {
         }
         return false;
     }
+
+    public boolean saveProduct(Product product) {
+        try {
+            if (productValidator.isValidate(product)) {
+                productDao.saveProduct(product);
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return false;
+    }
+
 }
