@@ -1,4 +1,3 @@
-
 package entity.parser;
 
 import entity.Boots;

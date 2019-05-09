@@ -11,6 +11,7 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
 
+
     private static final String fileName = "users.data";
     private static UserDaoImpl instance = null;
 
@@ -30,20 +31,6 @@ public class UserDaoImpl implements UserDao {
         }
 
         return instance;
-    }
-
-    public List<User> getAllUsers() throws IOException {
-        List<User> users = new ArrayList<User>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
-
-        String readLine = bufferedReader.readLine();
-        while(readLine != null) {
-            User user = UserParser.stringToUser(readLine);
-            users.add(user);
-
-        }
-
-        return users;
     }
 
     public void saveUser(User user) throws IOException {
@@ -85,5 +72,19 @@ public class UserDaoImpl implements UserDao {
         }
 
         saveUsers(users);
+    }
+
+    public List<User> getAllUsers() throws IOException {
+        List<User> users = new ArrayList<User>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+
+        String readLine = bufferedReader.readLine();
+        while(readLine != null) {
+            User user = UserParser.stringToUser(readLine);
+            users.add(user);
+            readLine = bufferedReader.readLine();
+        }
+
+        return users;
     }
 }

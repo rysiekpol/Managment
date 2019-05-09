@@ -1,13 +1,8 @@
 package validator;
 
-import api.UserDao;
-import dao.UserDaoImpl;
 import entity.User;
-import exceptions.UserLoginAlreadyExistException;
 import exceptions.UserShortLengthLoginException;
 import exceptions.UserShortLengthPasswordException;
-
-import java.io.IOException;
 
 public class UserValidator {
 
@@ -15,9 +10,8 @@ public class UserValidator {
     private final int MIN_LENGTH_LOGIN = 4;
 
     private static UserValidator instance = null;
-    private UserDao userDao = UserDaoImpl.getInstance();
 
-    private UserValidator(){
+    private UserValidator() {
 
     }
 
@@ -25,30 +19,26 @@ public class UserValidator {
         if (instance == null) {
             instance = new UserValidator();
         }
+
         return instance;
     }
 
-    public boolean isValidate(User user) throws  UserShortLengthLoginException, UserShortLengthPasswordException {
+    public boolean isValidate(User user) throws UserShortLengthLoginException, UserShortLengthPasswordException {
+        if (isPasswordLengthNoEnough(user.getPassword()))
+            throw new UserShortLengthPasswordException("Password is too short.");
 
-       if(isPasswordLenghtEnough(user.getPassword()))
-            throw new UserShortLengthPasswordException("Password is too short");
+        if (isLoginLengthNoEnough(user.getLogin()))
+            throw new UserShortLengthLoginException("Login is too short.");
 
-
-       if(isLoginLenghtEnough(user.getLogin()))
-           throw new UserShortLengthLoginException("Login is too short");
-
-
-       return true;
+        return true;
     }
 
-    private boolean isPasswordLenghtEnough(String password){
-        return password.length() >= MIN_LENGTH_PASSWORD;
+    private boolean isPasswordLengthNoEnough(String password) {
+        return password.length() < MIN_LENGTH_PASSWORD;
     }
 
-    private boolean isLoginLenghtEnough(String login){
-        return login.length() >= MIN_LENGTH_LOGIN;
+    private boolean isLoginLengthNoEnough(String login) {
+        return login.length() < MIN_LENGTH_LOGIN;
     }
-
 
 }
-

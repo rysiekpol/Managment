@@ -4,20 +4,20 @@ public class Boots extends Product {
 
     public final static char PRODUCT_TYPE = 'B';
 
-    private int size;
+    private Integer size;
     private boolean isNaturalSkin;
 
-    public Boots(Long id, String productName, float price, float weight, String color, int productCount, int size, boolean isNaturalSkin){
-        super(id, productName,price, weight, color, productCount);
+    public Boots(Long id, String productName, Float price, Float weight, String color, Integer productCount, Integer size, boolean isNaturalSkin) {
+        super(id, productName, price, weight, color, productCount);
         this.size = size;
         this.isNaturalSkin = isNaturalSkin;
     }
 
-    public int getSize(){
+    public Integer getSize() {
         return size;
     }
 
-    public boolean isNaturalSkin(){
+    public boolean isNaturalSkin() {
         return isNaturalSkin;
     }
 
@@ -26,4 +26,3 @@ public class Boots extends Product {
         return PRODUCT_TYPE + PRODUCT_SEPARATOR + getBasicProductString() + PRODUCT_SEPARATOR + size + PRODUCT_SEPARATOR + isNaturalSkin;
     }
 }
-

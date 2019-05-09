@@ -4,10 +4,13 @@ import api.ProductDao;
 import api.ProductService;
 import dao.ProductDaoImpl;
 import entity.Product;
+import exceptions.ProductCountNegativeException;
+import exceptions.ProductNameEmptyException;
+import exceptions.ProductPriceNoPositiveException;
+import exceptions.ProductWeightNoPositiveException;
 import validator.ProductValidator;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
@@ -16,60 +19,94 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao = ProductDaoImpl.getInstance();
     private ProductValidator productValidator = ProductValidator.getInstance();
 
-    private ProductServiceImpl(){
-
+    private ProductServiceImpl() {
     }
 
     public static ProductServiceImpl getInstance() {
         if (instance == null) {
             instance = new ProductServiceImpl();
         }
+
         return instance;
     }
 
-    List<Product> products;
-
-    public ProductServiceImpl(List<Product> products) {
-        this.products = products;
-    }
     public List<Product> getAllProducts() throws IOException {
-        return products;
+        return productDao.getAllProducts();
     }
-    public Integer getCountProducts() throws IOException{
-        return products.size();
+
+    public Integer getCountProducts() throws IOException {
+        return getAllProducts().size();
     }
-    public Product getProductByProductName(String productName) throws IOException{
-        for(Product product:products){
-            if(product.getProductName() == productName){
+
+    public Product getProductByProductName(String productName) throws IOException {
+        List<Product> products = getAllProducts();
+
+        for (Product product : products
+        ) {
+            boolean isFoundProduct = product.getProductName().equals(productName);
+            if (isFoundProduct) {
                 return product;
             }
+
         }
+
         return null;
     }
 
-    public boolean isMoreProductThan0(String productName) {
-        for (Product product : products){
-            if (isProductByNameExisting(productName) && product.getProductCount() > 0) {
-                return true;
+    public Product getProductById(Long productId) throws IOException {
+        List<Product> products = getAllProducts();
+
+
+        for (Product product : products
+        ) {
+            boolean isFoundProduct = product.getId().equals(productId);
+            if (isFoundProduct) {
+                return product;
             }
+
         }
-        return false;
+
+        return null;
     }
 
-    public boolean isProductByNameExisting(String productName){
-        for(Product product: products){
-            if(product.getProductName().equals(productName)){
-                return true;
-            }
+
+    public boolean isProductExist(String productName) {
+        Product product = null;
+
+        try {
+            product = getProductByProductName(productName);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return false;
+
+        if (product == null) return false;
+
+        return true;
     }
 
-    public boolean isProductWithIdExisting(Long productId){
-        for(Product product: products){
-            if(product.getId().equals(productId)){
-                return true;
+    public boolean isProductExist(Long productId) {
+        Product product = null;
+
+        try {
+            product = getProductById(productId);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (product == null) return false;
+
+        return true;
+    }
+
+    public boolean isProductOnWarehouse(String productName) {
+        try {
+            for(Product product : getAllProducts()) {
+                if (isProductExist(productName) && product.getProductCount() > 0) {
+                    return true;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }

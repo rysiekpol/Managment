@@ -1,59 +1,60 @@
 package entity;
 
 public class Product {
-    private Long productId;
-    private String productName;
-    private float price;
-    private float weight;
-    private String color;
-    private int productCount;
-
-    public Product(Long productId, String productName, float price, float weight, String color, int productCount){
-        this.productId = productId;
-        this.productName = productName;
-        this.price = price;
-        this.weight = weight;
-        this. color = color;
-        this.productCount = productCount;
-    }
 
     public final static String PRODUCT_SEPARATOR = "#";
     public final static char PRODUCT_TYPE = 'P';
 
-    public Long getId(){
-        return productId;
+    private Long id;
+    private String productName;
+    private Float price;
+    private Float weight;
+    private String color;
+    private Integer productCount;
+
+    public Product(Long id, String productName, Float price, Float weight, String color, Integer productCount) {
+        this.id = id;
+        this.productName = productName;
+        this.price = price;
+        this.weight = weight;
+        this.color = color;
+        this.productCount=productCount;
     }
 
-    public String getProductName(){
-        return productName;
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
-    public float getPrice(){
-        return price;
-    }
-
-    public float getWeight(){
-        return weight;
-    }
-
-    public String getColor(){
-        return color;
-    }
-
-    public int getProductCount(){
-        return productCount;
-    }
-
-    public void setPrice(int price){
-        this.price =price;
-    }
-
-    public void setProductCount(int productCount){
+    public void setProductCount(Integer productCount) {
         this.productCount = productCount;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public Integer getProductCount() {
+        return productCount;
+    }
+
     protected String getBasicProductString() {
-        return productId + PRODUCT_SEPARATOR + productName + PRODUCT_SEPARATOR + price + PRODUCT_SEPARATOR + weight + PRODUCT_SEPARATOR + color + PRODUCT_SEPARATOR + productCount;
+        return id + PRODUCT_SEPARATOR + productName + PRODUCT_SEPARATOR + price + PRODUCT_SEPARATOR + weight + PRODUCT_SEPARATOR + color + PRODUCT_SEPARATOR + productCount;
     }
 
     @Override

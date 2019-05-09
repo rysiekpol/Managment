@@ -1,12 +1,23 @@
+import api.ProductDao;
 import api.ProductService;
+import api.UserDao;
 import api.UserRegisterLoginFacade;
+import dao.ProductDaoImpl;
+import dao.UserDaoImpl;
+import entity.Boots;
+import entity.Cloth;
+import entity.Product;
 import entity.User;
 import facade.UserRegisterLoginFacadeImpl;
 import service.ProductServiceImpl;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     static Scanner scanner = new Scanner(System.in);
 
     public static void startMenu() {
@@ -20,6 +31,95 @@ public class Main {
         System.out.println("MANAGEMENT MENU");
         System.out.println("1 - Dodaj nowy product");
         System.out.println("0 - Wyloguj się");
+    }
+
+    public static void productTypeMenu() {
+        System.out.println("1 - Dodaj buty");
+        System.out.println("2 - Dodaj ubrania");
+        System.out.println("3 - Inne");
+    }
+
+    public static Product createOtherProduct() {
+        String productName, color;
+        Float price, weight;
+        Integer count;
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+
+        System.out.println("Color: ");
+        color = scanner.next();
+
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+
+        return new Product(1L, productName, price, weight, color, count);
+    }
+
+    public static Product createBootsProduct() {
+        String productName, color;
+        Float price, weight;
+        Integer count, size;
+        Boolean isNaturalSkin;
+
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+
+        System.out.println("Color: ");
+        color = scanner.next();
+
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+
+        System.out.println("Size: ");
+        size = scanner.nextInt();
+
+        System.out.println("Is natural skin: ");
+        isNaturalSkin = scanner.nextBoolean();
+
+
+        return new Boots(1L, productName, price, weight, color, count, size, isNaturalSkin);
+    }
+
+    public static Product createClothProduct() {
+        String productName, color, size, material;
+        Float price, weight;
+        Integer count;
+
+        System.out.println("ProductName: ");
+        productName = scanner.next();
+
+        System.out.println("Price: ");
+        price = scanner.nextFloat();
+
+        System.out.println("Weight: ");
+        weight = scanner.nextFloat();
+
+        System.out.println("Color: ");
+        color = scanner.next();
+
+        System.out.println("Count: ");
+        count = scanner.nextInt();
+
+        System.out.println("Size: ");
+        size = scanner.next();
+
+        System.out.println("Material: ");
+        material = scanner.next();
+
+
+        return new Cloth(1L, productName, price, weight, color, count, size, material);
     }
 
     public static void main(String[] args) {
@@ -63,6 +163,39 @@ public class Main {
                     break;
             }
 
+            while (loggedOn) {
+
+                loggedMenu();
+                read = scanner.nextInt();
+
+                switch (read) {
+                    case 1:
+                        productTypeMenu();
+                        read = scanner.nextInt();
+                        Product product = null;
+                        switch (read) {
+                            case 1:
+                                product = createBootsProduct();
+                                break;
+                            case 2:
+                                product = createClothProduct();
+                                break;
+                            case 3:
+                                product = createOtherProduct();
+                                break;
+                        }
+                        if (productService.saveProduct(product)) {
+                            System.out.println("Produkt został utworzony");
+                        } else {
+                            System.out.println("Produkt nie został utworzony.");
+                        }
+                        break;
+
+
+                    case 0:
+                        loggedOn = false;
+                        break;
+                }
 
 
             }
@@ -72,3 +205,4 @@ public class Main {
 
 
     }
+}

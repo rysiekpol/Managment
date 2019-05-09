@@ -1,11 +1,6 @@
-
 package validator;
 
 import entity.Product;
-import exceptions.ProductCountNegativeException;
-import exceptions.ProductNameEmptyException;
-import exceptions.ProductPriceNoPositiveException;
-import exceptions.ProductWeightNoPositiveException;
 import exceptions.ProductCountNegativeException;
 import exceptions.ProductNameEmptyException;
 import exceptions.ProductPriceNoPositiveException;
